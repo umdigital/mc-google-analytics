@@ -64,7 +64,7 @@ class MCGoogleAnalytics {
 
         // default to old plugin used tracking id
         if( !get_option( 'mc_ga_tracking_id' ) && ($id = get_option( 'web_property_id' )) ) {
-            if( preg_match( '/^UA-/', $id ) && !is_plugin_active( 'googleanalytics/googleanalytics.php' ) ) {
+            if( preg_match( '/^UA-/', $id ) && is_plugin_active( 'googleanalytics/googleanalytics.php' ) ) {
                 add_option( 'mc_ga_tracking_id', get_option( 'web_property_id' ) );
             }
         }
