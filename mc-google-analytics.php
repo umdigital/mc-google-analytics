@@ -50,6 +50,8 @@ class MCGoogleAnalytics {
         add_action( 'admin_init', 'MCGoogleAnalytics::adminInit' );
         add_action( 'admin_menu', 'MCGoogleAnalytics::adminMenu' );
 
+        add_filter( 'plugin_action_links_'. plugin_basename(__FILE__), 'MCGoogleAnalytics::actionLinks' );
+
         if( !is_admin() ) {
             add_action( 'wp_head', 'MCGoogleAnalytics::trackingCode' );
         }
@@ -80,6 +82,16 @@ class MCGoogleAnalytics {
             function(){
                 include MCGOOGLEANALYTICS_PATH .'templates'. DIRECTORY_SEPARATOR .'admin.tpl';
             }
+        );
+    }
+
+    static public function actionLinks( $links )
+    {
+        return array_merge(
+            $links,
+            array(
+                '<a href="'. admin_url( 'options-general.php?page=mc_google_analytics' ) .'">Settings</a>'
+            )
         );
     }
 
