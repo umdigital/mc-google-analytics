@@ -86,7 +86,9 @@ class MCGoogleAnalytics {
     static public function trackingCode()
     {
         if( $mcGATrackingID = get_option( 'mc_ga_tracking_id' ) ) {
-            include MCGOOGLEANALYTICS_PATH .'templates'. DIRECTORY_SEPARATOR .'tracking-code.tpl';
+            if( $mcGATrackingID != 'UA-000000-0' ) {
+                include MCGOOGLEANALYTICS_PATH .'templates'. DIRECTORY_SEPARATOR .'tracking-code.tpl';
+            }
         }
     }
 }
