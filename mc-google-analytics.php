@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: MC Google Analytics
- * Plugin URI: https://github.com/umichcreative/MC-Google-Analytics/
+ * Plugin URI: https://github.com/umichcreative/mc-google-analytics/
  * Description: Basic google analytics tracking code
  * Version: 1.0
  * Author: U-M: Michigan Creative
@@ -27,13 +27,13 @@ class MCGoogleAnalytics {
                 // this is the name of the folder your plugin lives in
                 'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
                 // the github API url of your github repo
-                'api_url' => 'https://api.github.com/repos/umichcreative/MC-Google-Analytics',
+                'api_url' => 'https://api.github.com/repos/umichcreative/mc-google-analytics',
                 // the github raw url of your github repo
-                'raw_url' => 'https://raw.githubusercontent.com/umichcreative/MC-Google-Analytics/master',
+                'raw_url' => 'https://raw.githubusercontent.com/umichcreative/mc-google-analytics/master',
                 // the github url of your github repo
-                'github_url' => 'https://github.com/umichcreative/MC-Google-Analytics',
+                'github_url' => 'https://github.com/umichcreative/mc-google-analytics',
                  // the zip url of the github repo
-                'zip_url' => 'https://github.com/umichcreative/MC-Google-Analytics/zipball/master',
+                'zip_url' => 'https://github.com/umichcreative/mc-google-analytics/zipball/master',
                 // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
                 'sslverify' => true,
                 // which version of WordPress does your plugin require?

@@ -6,7 +6,10 @@
         <table class="form-table">
             <tr valign="top">
                 <th scope="row">Tracking ID:</th>
-                <td><input type="text" name="mc_ga_tracking_id" value="<?php echo get_option('mc_ga_tracking_id'); ?>" placeholder="UA-000000-0" /></td>
+                <td>
+                    <input type="text" name="mc_ga_tracking_id" value="<?php echo get_option('mc_ga_tracking_id'); ?>" placeholder="UA-000000-0" /><br/>
+                    <em>You can find this in the analytics admin Property Settings area.</em>
+                </td>
             </tr>
         </table>
 
