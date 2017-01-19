@@ -7,4 +7,5 @@
   ga('create', '<?=$mcGATrackingID;?>', 'auto');
   ga('send', 'pageview');
 
+  var mcGATrackingParams = <?=json_encode( $mcGATrackingParams ); ?>;
 </script>

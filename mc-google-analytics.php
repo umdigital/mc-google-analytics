@@ -3,7 +3,7 @@
  * Plugin Name: MC Google Analytics
  * Plugin URI: https://github.com/umichcreative/mc-google-analytics/
  * Description: Basic google analytics tracking code
- * Version: 1.0
+ * Version: 1.1
  * Author: U-M: Michigan Creative
  * Author URI: http://creative.umich.edu
  */
@@ -64,6 +64,11 @@ class MCGoogleAnalytics {
             'mc_ga_tracking_id'
         );
 
+        register_setting(
+            'mc_google_analytics',
+            'mc_ga_events'
+        );
+
         // default to old plugin used tracking id
         if( !get_option( 'mc_ga_tracking_id' ) && ($id = get_option( 'web_property_id' )) ) {
             if( preg_match( '/^UA-/', $id ) && is_plugin_active( 'googleanalytics/googleanalytics.php' ) ) {
@@ -99,9 +104,77 @@ class MCGoogleAnalytics {
     {
         if( $mcGATrackingID = get_option( 'mc_ga_tracking_id' ) ) {
             if( $mcGATrackingID != 'UA-000000-0' ) {
+                $eventOpts = get_option( 'mc_ga_events', array() );
+
+                $mcGATrackingParams = self::_merge(
+                    array(
+                        'email' => array(
+                            'status'   => 0,
+                            'category' => 'MailTo'
+                        ),
+                        'download' => array(
+                            'status'     => 0,
+                            'category'   => 'Downloads-{EXT}',
+                            'extensions' => 'doc|docx|xls|xlsx|ppt|pptx|jpg|png|gif|pdf|zip|txt|mov'
+                        ),
+                        'external' => array(
+                            'status'   => 0,
+                            'category' => 'External'
+                        ),
+                    ),
+                    $eventOpts 
+                );
+
+                foreach( $mcGATrackingParams as $type => $event ) {
+                    if( $event['status'] ) {
+                        wp_enqueue_script(
+                            'mc-google-analytics',
+                            plugins_url('mc-google-analytics.js', __FILE__),
+                            array(),
+                            '1.0',
+                            true
+                        );
+                        break;
+                    }
+                }
+
                 include MCGOOGLEANALYTICS_PATH .'templates'. DIRECTORY_SEPARATOR .'tracking-code.tpl';
             }
         }
+    }
+
+    static private function _merge( $default, $changes )
+    {
+        foreach( $changes as $key => $val ) {
+            foreach( $val as $skey => $sval ) {
+                switch( $skey ) {
+                    case 'status':
+                        $sval = (int) $sval;
+                        break;
+
+                    case 'extensions':
+                        if( $exts = explode( ',', $sval ) ) {
+                            $exts = array_map( 'trim', $exts );
+                            $sval = implode( '|', $exts );
+                        }
+                        else {
+                            $exts = explode( '|', $sval );
+                            $exts = array_map( 'trim', $exts );
+                            $sval = implode( '|', $exts );
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+                if( strlen( $sval ) ) {
+                    $default[ $key ][ $skey ] = $sval;
+                }
+            }
+        }
+
+        return $default;
     }
 }
 MCGoogleAnalytics::init();
