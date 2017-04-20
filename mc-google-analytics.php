@@ -3,7 +3,7 @@
  * Plugin Name: MC Google Analytics
  * Plugin URI: https://github.com/umichcreative/mc-google-analytics/
  * Description: Basic google analytics tracking code
- * Version: 1.1
+ * Version: 1.1.1
  * Author: U-M: Michigan Creative
  * Author URI: http://creative.umich.edu
  */
@@ -17,7 +17,7 @@ class MCGoogleAnalytics {
         if( !class_exists( 'WP_GitHub_Updater' ) ) {
             include_once MCGOOGLEANALYTICS_PATH .'includes'. DIRECTORY_SEPARATOR .'updater.php';
         }
-        if( isset( $_GET['force-check'] ) && $_GET['force-check'] ) {
+        if( isset( $_GET['force-check'] ) && $_GET['force-check'] && !defined( 'WP_GITHUB_FORCE_UPDATE' ) ) {
             define( 'WP_GITHUB_FORCE_UPDATE', true );
         }
         if( is_admin() ) {
