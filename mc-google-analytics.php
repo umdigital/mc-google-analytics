@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: MC Google Analytics
- * Plugin URI: https://github.com/umichcreative/mc-google-analytics/
+ * Plugin URI: https://github.com/umdigital/mc-google-analytics/
  * Description: Basic google analytics tracking code
- * Version: 1.1.1
- * Author: U-M: Michigan Creative
- * Author URI: http://creative.umich.edu
+ * Version: 1.1.2
+ * Author: U-M: Digital
+ * Author URI: http://vpcomm.umich.edu
  */
 
 define( 'MCGOOGLEANALYTICS_PATH', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
@@ -27,13 +27,13 @@ class MCGoogleAnalytics {
                 // this is the name of the folder your plugin lives in
                 'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
                 // the github API url of your github repo
-                'api_url' => 'https://api.github.com/repos/umichcreative/mc-google-analytics',
+                'api_url' => 'https://api.github.com/repos/umdigital/mc-google-analytics',
                 // the github raw url of your github repo
-                'raw_url' => 'https://raw.githubusercontent.com/umichcreative/mc-google-analytics/master',
+                'raw_url' => 'https://raw.githubusercontent.com/umdigital/mc-google-analytics/master',
                 // the github url of your github repo
-                'github_url' => 'https://github.com/umichcreative/mc-google-analytics',
+                'github_url' => 'https://github.com/umdigital/mc-google-analytics',
                  // the zip url of the github repo
-                'zip_url' => 'https://github.com/umichcreative/mc-google-analytics/zipball/master',
+                'zip_url' => 'https://github.com/umdigital/mc-google-analytics/zipball/master',
                 // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
                 'sslverify' => true,
                 // which version of WordPress does your plugin require?
@@ -102,7 +102,9 @@ class MCGoogleAnalytics {
 
     static public function trackingCode()
     {
-        if( $mcGATrackingID = get_option( 'mc_ga_tracking_id' ) ) {
+        $showTrackingCode = apply_filters( 'mc_ga_show_tracking_code', true );
+
+        if( $showTrackingCode && ($mcGATrackingID = get_option( 'mc_ga_tracking_id' )) ) {
             if( $mcGATrackingID != 'UA-000000-0' ) {
                 $eventOpts = get_option( 'mc_ga_events', array() );
 
