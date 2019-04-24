@@ -3,7 +3,7 @@
  * Plugin Name: MC Google Analytics
  * Plugin URI: https://github.com/umdigital/mc-google-analytics/
  * Description: Basic google analytics tracking code
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: U-M: Digital
  * Author URI: http://vpcomm.umich.edu
  */
@@ -105,7 +105,7 @@ class MCGoogleAnalytics {
         $showTrackingCode  = apply_filters( 'mc_ga_show_tracking_code', true );
         $mcGACreateOptions = apply_filters( 'mc_ga_create_options', array() );
 
-        if( !is_array( $mcGaCreateOptions ) ) {
+        if( !is_array( $mcGACreateOptions ) ) {
             $mcGACreateOptions = (object) $mcGACreateOptions;
         }
 
