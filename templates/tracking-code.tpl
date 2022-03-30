@@ -4,8 +4,8 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '<?=$mcGATrackingID;?>', 'auto', <?=json_encode( $mcGACreateOptions );?>);
+  ga('create', '<?php echo $mcGATrackingID;?>', 'auto', <?php echo json_encode( $mcGACreateOptions );?>);
   ga('send', 'pageview');
 
-  var mcGATrackingParams = <?=json_encode( $mcGATrackingParams ); ?>;
+  var mcGATrackingParams = <?php echo json_encode( $mcGATrackingParams ); ?>;
 </script>
