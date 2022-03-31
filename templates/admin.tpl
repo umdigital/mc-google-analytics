@@ -22,7 +22,7 @@
 <div class="wrap">
     <h2>Google Analytics</h2>
     <form method="post" action="options.php">
-        <? settings_fields( 'mc_google_analytics' ); ?>
+        <?php settings_fields( 'mc_google_analytics' ); ?>
 
         <table class="form-table">
             <tr valign="top">
@@ -36,7 +36,7 @@
 
         <h3>Link Event Tracking</h3>
         <p>Use the following to track links via <a href="https://support.google.com/analytics/answer/1033068?hl=en">Google Anlaytics Event</a> tracking. You can customize the category but the Action will always be the link destination and the label will be the page the link was clicked on.</p>
-        <?
+        <?php
         $mcGAEvents = array_replace_recursive(
             array(
                 'email' => array(
@@ -95,6 +95,6 @@
             </tr>
         </table>
 
-        <? submit_button(); ?>
+        <?php submit_button(); ?>
     </form>
 </div>

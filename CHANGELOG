@@ -1,3 +1,7 @@
+1.1.5 (2022-03-31)
+==================
+don't require short_open_tag PR#1
+
 1.1.4 (2019-04-24)
 ==================
 bug fix with variable name

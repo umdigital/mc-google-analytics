@@ -3,7 +3,7 @@
  * Plugin Name: MC Google Analytics
  * Plugin URI: https://github.com/umdigital/mc-google-analytics/
  * Description: Basic google analytics tracking code
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: U-M: Digital
  * Author URI: http://vpcomm.umich.edu
  */
