@@ -2,6 +2,9 @@ Google Analytics Tracker
 ========================
 Provides easy way to add google analytics tracking with just your tracking ID.  No need to connect to your google account.
 
+## NOTICE
+This plugin only works for Universal Analytics and not GA4.  For GA4 use the offical [Google Site Kit](https://wordpress.org/plugins/google-site-kit/) plugin.
+
 ### Filters
 **mc_ga_show_tracking_code**
 
